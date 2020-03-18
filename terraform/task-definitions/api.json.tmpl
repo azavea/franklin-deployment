@@ -1,0 +1,36 @@
+[
+  {
+    "cpu": 512,
+    "essential": true,
+    "image": "${image}",
+    "memory": 1024,
+    "name": "api",
+    "portMappings": [
+      {
+        "containerPort": 9090,
+        "hostPort": 0
+      }
+    ],
+    "command": [
+      "serve",
+      "--db-user",
+      "${postgres_user}",
+      "--db-password",
+      "${postgres_password}",
+      "--db-host",
+      "${postgres_host}",
+      "--db-port",
+      "5432",
+      "--db-name",
+      "${postgres_name}"
+    ],
+    "logConfiguration": {
+      "logDriver": "syslog",
+      "options": {
+        "syslog-address": "${papertrail_endpoint}",
+        "syslog-tls-ca-cert": "/etc/papertrail-bundle.pem",
+        "tag": "franklin-api"
+      }
+    }
+  }
+]

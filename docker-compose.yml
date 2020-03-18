@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  terraform:
+    image: quay.io/azavea/terraform:0.12.13
+    volumes:
+      - ./:/usr/local/src
+      - $HOME/.aws:/root/.aws:ro
+    environment:
+      - AWS_PROFILE=${AWS_PROFILE:-raster-foundry}
+      - GIT_COMMIT=${GIT_COMMIT:-latest}
+      - FRANKLIN_DEBUG=1
+      - FRANKLIN_SETTINGS_BUCKET=${FRANKLIN_SETTINGS_BUCKET:-rasterfoundry-production-config-us-east-1}
+    working_dir: /usr/local/src
+    entrypoint: bash
