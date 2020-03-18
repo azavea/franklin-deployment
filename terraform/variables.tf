@@ -13,6 +13,10 @@ variable "aws_region" {
   type    = string
 }
 
+variable "external_access_cidr_block" {
+  type = string
+}
+
 variable "rds_database_name" {
   type = string
 }
