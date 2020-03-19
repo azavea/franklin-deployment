@@ -36,7 +36,7 @@ resource "aws_lb_target_group" "api" {
     matcher             = 200
     protocol            = "HTTP"
     timeout             = 3
-    path                = "/"
+    path                = "/open-api/spec.yaml"
     unhealthy_threshold = 2
   }
 
