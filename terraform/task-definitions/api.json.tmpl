@@ -22,7 +22,14 @@
       "--db-port",
       "5432",
       "--db-name",
-      "${postgres_name}"
+      "${postgres_name}",
+      "--api-host",
+      "${api_host}",
+      "--api-scheme",
+      "https",
+      "--external-port",
+      "443",
+      "--with-transactions"
     ],
     "logConfiguration": {
       "logDriver": "syslog",

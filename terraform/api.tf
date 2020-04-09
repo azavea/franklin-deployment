@@ -91,6 +91,7 @@ resource "aws_ecs_task_definition" "api" {
     postgres_password = data.terraform_remote_state.core.outputs.database_password
     postgres_host     = data.terraform_remote_state.core.outputs.database_fqdn
     postgres_name     = var.rds_database_name
+    api_host          = aws_route53_record.api.name
 
     papertrail_endpoint = data.terraform_remote_state.core.outputs.papertrail_endpoint
 
