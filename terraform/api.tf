@@ -16,7 +16,7 @@ resource "aws_security_group" "alb" {
 #
 resource "aws_lb" "api" {
   name            = "alb${var.project}API"
-  security_groups = [aws_security_group.alb.id]
+  security_groups = "${concat([aws_security_group.alb.id], aws_security_group.franklin_server_alb_whitelist_ec2.*.id)}"
   subnets         = data.terraform_remote_state.core.outputs.public_subnet_ids
 
   enable_http2 = true
